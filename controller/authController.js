@@ -16,7 +16,7 @@ console.log("registerUser",name, email, password)
 
     res.status(201).json({ msg: 'User registered successfully' });
   } catch (err) {
-    res.status(500).json({ msg: 'Server error' });
+    res.status(500).json({ msg: 'Server error',err });
   }
 };
 
