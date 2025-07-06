@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const studentRoutes = require("./routes/studentRoutes");
+const authRoutes = require("./routes/authRoutes")
 require("dotenv").config();
 
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use("/students", studentRoutes);
+app.use('/students', authRoutes);  // 👈 All auth routes will now be prefixed with /api/auth
 
 
 // Start server after DB connects
