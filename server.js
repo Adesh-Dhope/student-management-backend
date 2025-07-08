@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const studentRoutes = require("./routes/studentRoutes");
 const authRoutes = require("./routes/authRoutes")
 const subjectRoutes = require("./routes/SubjectRoute")
+const teacherRoutes = require("./routes/teacherRoutes")
 require("dotenv").config();
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/students/subjects', subjectRoutes);
+app.use('/students/teacher', teacherRoutes);   // 👈 your requested route
 app.use('/students', authRoutes);
 app.use('/students', studentRoutes);
 
