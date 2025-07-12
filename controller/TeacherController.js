@@ -45,12 +45,9 @@ const updateTeacher = async (req, res) => {
   try {
     const { id } = req.params;
 
-    console.log('update', id, req);  // Debugging
-    console.log('update', id, req.body);  // Debugging
-
     const { teachName, teacherID, selectedSubjects } = req.body;
 
-    if (!teachName || !teacherID || !selectedSubjects) {
+    if (!teachName || !teacherID || selectedSubjects.length === 0) {
       return res.status(400).json({ error: 'Missing fields' });
     }
 
@@ -59,7 +56,6 @@ const updateTeacher = async (req, res) => {
       { teachName, teacherID, selectedSubjects },
       { new: true }
     );
-    console.log('updated',updateTeacher)
 
     if (!updatedTeacher) {
       return res.status(404).json({ error: 'Teacher not found' });
